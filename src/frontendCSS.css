@@ -1,0 +1,371 @@
+
+
+body {
+    font-family: "Montserrat", sans-serif, Arial;
+}
+#all {
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+}
+main {
+    width: 100%;
+    height: 100%;
+    float: left;
+    clear: both;
+    color: brown;
+}
+#welcome-set {
+    width: 40%;
+    height: 100%;
+    float: left;
+    background-image: url("backdrop.gif");
+}
+#estimator {
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+header {
+    width: 100%;
+    height: 10%;
+    float: left;
+    clear: both;
+}
+#head-links {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+}
+#logo img {
+    margin-left: -40px;
+    margin-top: -20px;
+    transform: scale(0.6);
+}
+#head-links img {
+    float: left;
+    width: 50%;
+}
+#estimator #news-link, #special {
+    float: right;
+}
+#news-box {
+    width: 90%;
+    margin-top: 30px;
+    height: 100px;
+}
+#news-link a, #special a {
+    padding-bottom: 3px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: lightyellow;
+    border: 1px solid brown;
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 20px;
+    background-color: brown;
+    transition: 0.5s ease all;
+}
+#news-link a:hover {
+    color: white;
+    background-color:  rgb(196, 34, 34);
+    border: 1px solid rgb(196, 34, 34);
+}
+.hvr-underline-from-center:before {
+    background: black;
+}
+#special a {
+    color: black;
+    border-radius: 0px;
+    margin-top: -10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 0px solid black;
+    background-color: white;
+}
+#middle {
+    width: 100%;
+    height: 80%;
+    float: left;
+    clear: both;
+    letter-spacing: 4px;
+}
+footer {
+    width: 100%;
+    height: 10%;
+    float: left;
+    clear: both;
+}
+#about {
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    margin-top: 30px;
+    font-size: 0.8em;
+    padding-left: 10px;
+    color: black;
+}
+#text {
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    margin-top: 50px;
+    transform: scale(0.8);
+}
+#middle #covid {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 0px;
+    margin: 0px;
+    font-size: 7.3em;
+}
+#middle #est {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-size: 0.8em; 
+    font-weight: lighter;  
+}
+#middle #build {
+    width: 90%;
+    float: left;
+    clear: both;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-size: 1em;
+    margin-top: 50px;
+    letter-spacing: 2px;
+    color: grey;
+}
+#go-link {
+    float: left;
+    clear: both;
+    width: 100%;
+    padding-left: 10px;
+    margin-top: 50px;
+}
+#go-link a {
+    color: lightyellow;
+    border: 1px solid brown;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: brown;
+    text-decoration: none;
+    font-size: 1em;
+    transition: 0.5s ease all;
+}
+#go-link a:hover {
+    color: white;
+    background-color: rgb(196, 34, 34);
+    border: 1px solid  rgb(196, 34, 34);
+}
+#rights {
+    text-align: right;
+    color: black;
+    font-size: 0.8em;
+    width: 80%;
+    margin: auto;
+    padding-right: 10px;
+    margin-top: 30px;
+}
+h1 {
+    float: left;
+    clear: both;
+    width: 100%;
+    letter-spacing: 0px;
+    margin-top: 0px;
+    color:grey;
+    font-size: 1.8em;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+#estimator-main {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+}
+#output {
+    width: 100%;
+    height: 250px;
+    float: left;
+    clear: both;
+    padding-bottom: 80px;
+    border-bottom: 1px solid black;
+    margin-top: -10px;
+}
+#inputs {
+    width: 100%;
+    float: left;
+    clear: both;
+    height: 40%;
+    margin-top: 20px;
+}
+#inputs input {
+    width: 170px;
+    height: 25px;
+    float: left;
+    margin-right: 10px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    background-color: rgb(247, 241, 241);
+    border: 0px solid brown;
+    font-size: 0.6em;
+    border-bottom: 3px solid brown;
+    transition: 0.5s ease all;
+}
+#inputs input:hover {
+    background-color: rgb(241, 214, 214);
+}
+#inputs input:focus {
+    outline: none;
+    border-bottom: 3px solid rgb(224, 22, 22); 
+}
+#inputs #period input {
+    width: 10px;
+    float: left;
+    clear: both;
+    height: 5px;
+}
+#inputs #period {
+    width: 100%;
+    float: left;
+    clear: both;
+}
+label {
+    float: left;
+    padding-bottom: 0px;
+}
+.reg {
+    font-size: 0.7em;
+    width: 100%;
+    float: left;
+    clear: both;
+    color: grey;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#top {
+    margin-top: -10px;
+}
+#period {
+    margin-bottom: 10px;
+}
+#period label {
+    font-size: 0.8em;
+}
+#impact, #severeImpact, #inputValues {
+    width: 30%;
+    height: 150px;
+    float: left;
+    margin-left: 10px;
+}
+#severeImpact {
+    margin-left: 30px;
+}
+#impact {
+    margin-left: 20px;
+}
+#output #impact label, #output #severeImpact label, #output #inputValues label {
+    font-size: 0.8em;
+    float: left;
+    clear: both;
+    width: 100%;
+    color: grey;
+}
+#output #inputValues label {
+    margin-bottom: 10px;
+}
+.dataInfo {
+    font-size: 0.7em;
+    float: left;
+    width: 100%;
+    clear: both;
+    margin-bottom: 22px;
+    letter-spacing: 0px;
+}
+.radBut {
+    width: 30%;
+    height: 10px;
+}
+#period button {
+    float: right;
+    width: 90px;
+    height: 35px;
+    border-radius: 50px;
+    color: white;
+    font-size: 0.8em;
+    margin-right: 40px;
+    background-color: brown;
+    margin-top: -40px;
+    transition: 0.5s ease all;
+    border: 0px solid red;
+}
+#period button:hover {
+    background-color: rgb(187, 44, 44);
+}
+#period button:focus {
+    outline: none;
+}
+.graph {
+    font-size: 1em;
+    float: left;
+    clear: both;
+    border: 0px solid lightgrey;
+    width: 95%;
+    margin-top: 8px;
+    padding: 3px;
+    height: 30px;
+    letter-spacing: 0px;
+}
+.count {
+    position: absolute;
+    right: .25em;
+    top: 2.2em;
+    padding: .15em;
+    font-size: .65em;
+    font-weight: bold;
+}
+.bar .label {
+    font-size: .75em;
+    padding: 0.3em;
+    background: transparent;
+    width: 35em;
+    display: inline-block;
+    position: relative;
+    z-index: 2;
+    font-weight: bold;
+    top: -5px;
+}
+.bar {
+    background: lightgray;
+    width: 0;
+    margin: .27em 0;
+    color: brown;
+    position: relative;
+    transition: width 2s, background .2s;
+    -webkit-transform: translate3d(0, 0, 0);
+    clear: both;
+}
+.bar:nth-of-type(2n) {
+    background: rgb(228, 225, 225);
+}
+.wrap {
+    width: 100%;
+    margin: 0 auto;
+}
+#inputValues span {
+    color: grey;
+}
+#timePeriod {
+    float: right;
+    margin-right: 50%;
+    color: grey;
+}
