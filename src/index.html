@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html lang = "en-us">
+<head>
+    <meta charset = "utf-8">
+    <title>COVID-19 Estimator</title>
+    <link rel = "stylesheet" href = "hover-min.css"/>
+    <link rel = "stylesheet" href = "frontendCSS.css"/>
+    <script type = "text/javascript" src = "jQuery-3.4.1.uncom.dev.js"></script>
+    <script type = "text/javascript">
+        import covid19ImpactEstimator from "estimator.js";
+
+        $(init);
+        function init(){
+            $("#special a").addClass("hvr-underline-from-center");
+        }      
+        function main(){
+
+            var regionName = document.getElementById("regName");
+            var avgAge = document.getElementById("avgAge");
+            var avgDailyInc = document.getElementById("avgDIn");
+            var avgDailyIncPop = document.getElementById("avgDInP");
+            var timeSpan = document.getElementById("timeSpan");
+            var repCase = document.getElementById("repCases");
+            var pop = document.getElementById("population");
+            var total = document.getElementById("totHosBd");
+            var time = document.getElementsByName("periodType");
+
+            var regEx = /\d+/;
+
+            if (avgAge.value.match(regEx) && avgDailyInc.value.match(regEx) && avgDailyIncPop.value.match(regEx) && timeSpan.value.match(regEx) && repCase.value.match(regEx) && pop.value.match(regEx) && total.value.match(regEx)){
+                for (i = 0; i < time.length; i++){
+                    currentTime = time[i];
+                    if (currentTime.checked){
+                        if (timeSpan.value == 1){
+                            var plus = currentTime.getAttribute("data-period-type");
+                            var selectedPeriod = plus;
+                        } else {
+                            var selectedPeriod = currentTime.value;
+                        }
+                    }
+                }
+                
+                var outRegName = document.getElementById("regionName");
+                var outAvgAge = document.getElementById("averageAge");
+                var outDailyInc = document.getElementById("dailyInc");
+                var outIncPop = document.getElementById("incpop");
+                var outTime = document.getElementById("timeToElapse");
+                var outRepCases = document.getElementById("reportedCasesA");
+                var outPopul = document.getElementById("pop");
+                var totalHospBed = document.getElementById("THBs");
+
+                outRegName.innerHTML = regionName.value;
+                outAvgAge.innerHTML = avgAge.value;
+                outDailyInc.innerHTML = avgDailyInc.value;
+                outIncPop.innerHTML = avgDailyIncPop.value;
+                outTime.innerHTML = timeSpan.value + " " + selectedPeriod;
+                outRepCases.innerHTML = repCase.value;
+                outPopul.innerHTML = pop.value;
+                totalHospBed.innerHTML = total.value;
+
+                var values = {
+                    region: {
+                        name: regionName.value,
+                        avgAge: avgAge.value,
+                        avgDailyIncomeInUSD: avgDailyInc.value,
+                        avgDailyIncomePopulation: avgDailyIncPop.value
+                    },
+                    periodType: selectedPeriod,
+                    timeToElapse: timeSpan.value,
+                    reportedCases: repCase.value,
+                    population: pop.value,
+                    totalHospitalBeds: total.value
+                }
+
+                var result = covid19ImpactEstimator(values);
+
+                var impactCI = result.impact.currentlyInfectedI;
+                    impactIR = result.impact.infectionsByRequestedTimeI;
+                    impactSC = result.impact.severeCasesByRequestedTimeI;
+                    impactHB = result.impact.hospitalBedsByRequestedTimeI;
+                    impactCR = result.impact.casesForICUByRequestedTimeI;
+                    impactVR = result.impact.casesForVentilatorsByRequestedTimeI;
+                    impactDF = result.impact.dollarsInFlightI;
+
+                var severeCI = result.severeImpact.currentlyInfectedSI;
+                    severeIR = result.severeImpact.infectionsByRequestedTimeSI;
+                    severeSC = result.severeImpact.severeCasesByRequestedTimeSI;
+                    severeHB = result.severeImpact.hospitalBedsByRequestedTimeSI; 
+                    severeCR = result.severeImpact.casesForICUByRequestedTimeSI;
+                    severeVR = result.severeImpact.casesForVentilatorsByRequestedTimeSI;
+                    severeDF = result.severeImpact.dollarsInFlightSI;
+
+                
+                var cal = Math.floor((Math.random() * 100) + 50);
+                var cal1 = Math.floor((Math.random() * 100) + 50);
+                var cal2 = Math.floor((Math.random() * 100) + 50);
+                var cal3 = Math.floor((Math.random() * 100) + 50);
+                var cal4 = Math.floor((Math.random() * 100) + 50);
+                var cal5 = Math.floor((Math.random() * 100) + 50);
+                var cal6 = Math.floor((Math.random() * 100) + 1);
+
+                var cap = Math.floor((Math.random() * 100) + 30);
+                var cap1 = Math.floor((Math.random() * 100) + 30);
+                var cap2 = Math.floor((Math.random() * 100) + 30);
+                var cap3 = Math.floor((Math.random() * 100) + 30);
+                var cap4 = Math.floor((Math.random() * 100) + 30);
+                var cap5 = Math.floor((Math.random() * 100) + 30);
+                var cap6 = Math.floor((Math.random() * 100) + 30);
+
+                document.getElementById("impCI").setAttribute("data-percentage", cal);
+                document.getElementById("impIR").setAttribute("data-percentage", cal1);
+                document.getElementById("impSC").setAttribute("data-percentage", cal2);
+                document.getElementById("impHB").setAttribute("data-percentage", cal3);
+                document.getElementById("impCR").setAttribute("data-percentage", cal4);
+                document.getElementById("impVR").setAttribute("data-percentage", cal5);
+                document.getElementById("impDF").setAttribute("data-percentage", cal6);
+
+                document.getElementById("sevCI").setAttribute("data-percentage", cap);
+                document.getElementById("sevIR").setAttribute("data-percentage", cap1);
+                document.getElementById("sevSC").setAttribute("data-percentage", cap2);
+                document.getElementById("sevHB").setAttribute("data-percentage", cap3);
+                document.getElementById("sevCR").setAttribute("data-percentage", cap4);
+                document.getElementById("sevVR").setAttribute("data-percentage", cap5);
+                document.getElementById("sevDF").setAttribute("data-percentage", cap6);
+            
+
+
+
+                document.getElementById("impCI").setAttribute("data-percent", impactCI);
+                document.getElementById("impIR").setAttribute("data-percent", impactIR);
+                document.getElementById("impSC").setAttribute("data-percent", impactSC);
+                document.getElementById("impHB").setAttribute("data-percent", impactHB);
+                document.getElementById("impCR").setAttribute("data-percent", impactCR);
+                document.getElementById("impVR").setAttribute("data-percent", impactVR);
+                document.getElementById("impDF").setAttribute("data-percent", impactDF);
+
+                document.getElementById("sevCI").setAttribute("data-percent", severeCI);
+                document.getElementById("sevIR").setAttribute("data-percent", severeIR);
+                document.getElementById("sevSC").setAttribute("data-percent", severeSC);
+                document.getElementById("sevHB").setAttribute("data-percent", severeHB);
+                document.getElementById("sevCR").setAttribute("data-percent", severeCR);
+                document.getElementById("sevVR").setAttribute("data-percent", severeVR);
+                document.getElementById("sevDF").setAttribute("data-percent", severeDF);
+                
+
+                setTimeout(function start (){
+                    $('.bar').each(function(i){  
+                        var $bar = $(this);
+                        $(this).append('<span class = "count"></span>');
+                        setTimeout(function(){
+                            $bar.css('width', $bar.attr('data-percentage'))      
+                        }, i*100);
+                    });
+                    $('.count').each(function ($bar) {
+                        $(this).prop('Counter',0).animate({
+                            Counter: $(this).parent('.bar').attr('data-percent')
+                        }, {
+                            duration: 2000,
+                            easing: 'swing',
+                            step: function (now) {
+                                $(this).text(Math.ceil(now));
+                            }
+                        });
+                    });
+                }, 500);
+
+            } else {
+                alert("Please Match the Format Requested");
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id = "all">
+        <main>
+            <div id = "welcome-set">
+                <header>
+                    <div id = "head-links">
+                        <div id = "logo"><img src = "Untitled-1.gif" height = "" width = "" alt = "logo"/></div>
+                    </div>
+                </header>
+                <div id = "middle">
+                    <div id = "text">
+                        <p id = "covid">COVID-19</p>
+                        <p id = "est">Estimator</p>
+                        <p id = "build">
+                            #BuildForSDG Challenge 2020 developed a novel coronavirus infections estimator
+                            that not only calculates the amount of infected people within a region, 
+                            but also gives information on the effect of the pandemic on that regions economy. 
+                        </p>
+                        <div id = "go-link"><a href = "https://www.google.com/url?q=https://medium.com/%40Jason_Scott_Warner&ust=1586592240000000&usg=AFQjCNFswwL4hBzh4USOk4LIp3ZFBMlt8w&hl=en">Find Out More</a></div>
+                    </div>
+                </div>
+                <footer>
+                    <div id = "about">©2020 Andela FaceBook.</div>
+                </footer>
+            </div>
+            <div id = "estimator">
+                <header>
+                    <div id = "news-box">
+                        <div id = "news-link"><a  href = "https://www.google.com/url?q=https://blogs.worldbank.org/opendata/85-africans-live-less-550-day&ust=1586593020000000&usg=AFQjCNGFBNI-f_c7pDg4wKTzpfT3gHt9Lg&hl=en">News</a></div>
+                        <div id = "special"><a href = "">About</a></div>
+                </header>
+                <div id = "middle">
+                    <div id = "estimator-main">
+                        <h1>Enter in your values below</h1>
+                        <div id = "output">
+                            <div id = "inputValues">
+                                <label>Data</label>
+                                <div class = "dataInfo">Region Name: <span id = "regionName"></span></div>
+                                <div class = "dataInfo">Avg Age: <span id = "averageAge"></span></div>
+                                <div class = "dataInfo">Avg Daily Income($): <span id = "dailyInc"></span></div>
+                                <div class = "dataInfo">Avg daily Income Population($): <span id = "incpop"></span></div>
+                                <div class = "dataInfo">Time Span: <span id = "timeToElapse"></span></div>
+                                <div class = "dataInfo">Reported Cases: <span id = "reportedCasesA"></span></div>
+                                <div class = "dataInfo">Population: <span id = "pop"></span></div>
+                                <div class = "dataInfo">Total Hospital Beds: <span id = "THBs"></span></div>
+                            </div>
+                            <div id = "impact">
+                                <label>Impact</label>
+                                <div id = "impCI" class = "graph bar cf" data-percent = "0"><span class = "label">Currently Infected</span></div>
+                                <div id = "impIR" class = "graph bar cf" data-percent = "0"><span class = "label">Infections By Requested Time</span></div>
+                                <div id = "impSC" class = "graph bar cf" data-percent = "0"><span class = "label">Severe Cases By Requested Time</span></div>
+                                <div id = "impHB" class = "graph bar cf" data-percent = "0"><span class = "label">Hospital Cases By Requested Time</span></div>
+                                <div id = "impCR" class = "graph bar cf" data-percent = "0"><span class = "label">Cases for ICU By Requested Time</span></div>
+                                <div id = "impVR" class = "graph bar cf" data-percent = "0"><span class = "label">Cases for Ventilators By Requested Time</span></div>
+                                <div id = "impDF" class = "graph bar cf" data-percent = "0"><span class = "label">Dollars In Flight</span></div>
+                            </div>
+                            <div id = "severeImpact">
+                                <label>Severe Impact</label>
+                                <div id = "sevCI" class = "graph bar cf" data-percent = "0"><span class = "label">Currently Infected</span></div>
+                                <div id = "sevIR" class = "graph bar cf" data-percent = "0"><span class = "label">Infections By Requested Time</span></div>
+                                <div id = "sevSC" class = "graph bar cf" data-percent = "0"><span class = "label">Severe Cases By Requested Time</span></div>
+                                <div id = "sevHB" class = "graph bar cf" data-percent = "0"><span class = "label">Hospital Cases By Requested Time</span></div>
+                                <div id = "sevCR" class = "graph bar cf" data-percent = "0"><span class = "label">Cases for ICU By Requested Time</span></div>
+                                <div id = "sevVR" class = "graph bar cf" data-percent = "0"><span class = "label">Cases for Ventilators By Requested Time</span></div>
+                                <div id = "sevDF" class = "graph bar cf" data-percent = "0"><span class = "label">Dollars In Flight</span></div>
+                            </div>
+                        </div>
+                        <div id = "inputs">
+                            <form action = "" method = "post">
+                                <label class = "reg" id = "top">Region Data</label>
+                                <input type = "text" id = "regName" placeholder = "Name" required/>
+                                <input type = "text" id = "avgAge" placeholder = "Average Age" required/>
+                                <input type = "text" id = "avgDIn" placeholder = "Average Daily Income ($)" required/>
+                                <input type = "text" id = "avgDInP" placeholder = "Average Daily Income Population ($)" required/>
+                                <label class = "reg">Period Data</label>
+                                <div id = "period">
+                                    <div class = "radBut"><input type = "radio" name = "periodType" value = "Days" data-period-type = "Day" required checked = "checked" id = "days"/><label>Days</label></div>
+                                    <div class = "radBut"><input type = "radio" name = "periodType" value = "Weeks" data-period-type = "Week" required id = "weeks"/><label>Weeks</label></div>
+                                    <div class = "radBut"><input type = "radio" name = "periodType" value = "Months" data-period-type = "Month" required id = "months"/><label>Months</label></div>
+                                    <button type = "reset" data-go-estimate onclick = "main()">Go</button>
+                                </div>
+                                <input type = "text" data-time-to-elapse id = "timeSpan"placeholder = "Time Span" required/>
+                                <input type = "text" data-reported-cases id = "repCases" placeholder = "Reported Cases" required/>
+                                <input type = "text" data-population id = "population" placeholder = "Population" required/>
+                                <input type = "text" data-total-hospital-beds id = "totHosBd" placeholder = "Total Hospital Beds" required/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <footer>
+                    <div id = "footer-two">
+                        <div id = "rights">All rights reserved.</div>
+                    </div>
+                </footer>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
